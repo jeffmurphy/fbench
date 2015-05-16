@@ -734,8 +734,10 @@ int main(int argc, char *argv[])
         printf("to normalise for reporting results.  For archival results,\n");
         printf("adjust iteration count so the benchmark runs about five minutes.\n\n");
 
+#if 0
         printf("Press return to begin benchmark:");
 	gcc_warning_martinet = fgets(tbfr, sizeof tbfr, stdin);
+#endif
 #endif
 
 	/* Perform ray trace the specified number of times. */
@@ -784,8 +786,10 @@ int main(int argc, char *argv[])
 #ifndef ACCURACY
 	}
 
+#if 0
         printf("Stop the timer:\007");
 	gcc_warning_martinet = fgets(tbfr, sizeof tbfr, stdin);
+#endif
 #endif
 
 	/* Now evaluate the accuracy of the results from the last ray trace */

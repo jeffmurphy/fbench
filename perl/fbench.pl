@@ -26,6 +26,10 @@
     use warnings;
     use Math::Trig;
 
+ use Time::HiRes qw( gettimeofday tv_interval );
+
+my $start_time; my $stop_time;
+
     my $ITERATIONS = 1000;
     my $max_surfaces = 10;
 
@@ -252,8 +256,7 @@ to normalise for reporting results.  For archival results,
 adjust iteration count so the benchmark runs about five minutes.
 
 EOD
-    print("Press return to begin benchmark: ");
-    <>;
+    $start_time = [gettimeofday];
 
     # Perform ray trace the specified number of times.
 
@@ -292,8 +295,7 @@ EOD
        $max_lchrom = $max_lspher;
     }
 
-    printf("Stop the timer:\a ");
-    <>;
+    $stop_time = [gettimeofday];
 
     # Now evaluate the accuracy of the results from the last ray trace
 
@@ -346,3 +348,5 @@ EOD
     } else {
        printf("\nNo errors in results.\n");
     }
+
+print tv_interval($start_time,  $stop_time), "\n";

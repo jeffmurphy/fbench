@@ -69,7 +69,7 @@ var itercount int /* The iteration counter for the main loop
                      optimise out the loop over the ray
                      tracing code. */
 
-const ITERATIONS = 10000
+const ITERATIONS = 1000000
 
 var niter int = ITERATIONS /* Iteration counter */
 
@@ -292,7 +292,6 @@ func main() {
         fmt.Printf("adjust iteration count so the benchmark runs about five minutes.\n\n")
 
         fmt.Printf("Press return to begin benchmark:")
-        fmt.Scanln()            // wait for EOL.
     }
 	starttime := time.Now() // start timing
 
@@ -353,11 +352,6 @@ func main() {
     
 	elapsedtime := time.Since(starttime) // timing
     
-    if interactive {
-        fmt.Printf("Stop the timer:\007")
-        fmt.Scanln() // wait for EOL.
-    }
-
 	/* Now evaluate the accuracy of the results from the last ray trace */
 
 	outarr[0] = fmt.Sprintf("%15s   %21.11f  %14.11f",

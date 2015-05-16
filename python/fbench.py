@@ -22,7 +22,7 @@
     average floating point program.
 """
 
-import sys, math, string
+import sys, math, string, time
 
 niter = 1000
 
@@ -200,8 +200,7 @@ to normalise for reporting results.  For archival results,
 adjust iteration count so the benchmark runs about five minutes.""" % (niter,
 niter / 1000.0)
 
-print "Press return to begin benchmark: ",
-sys.stdin.readline()
+start_time = time.time()
 
 axis_slope_angle = 0
 od_sa = [ [0, 0], [0, 0]]
@@ -239,8 +238,7 @@ for itercount in range(niter):
     max_osc = 0.0025
     max_lchrom = max_lspher
 
-print "Stop the timer: "
-sys.stdin.readline()
+stop_time = time.time()
 
 outarr = [
             "%15s   %21.11f  %14.11f" % ("Marginal ray", od_sa[0][0], od_sa[0][1]),
@@ -273,3 +271,6 @@ if errors > 0:
         (errors, "s" * (errors > 1)))
 else:
     print "\nNo errors in results."
+
+print stop_time - start_time
+

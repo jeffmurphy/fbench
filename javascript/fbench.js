@@ -69,13 +69,14 @@
 
     var outarr;     	    	    // Computed output of program goes here
 
-    var niter = 1000;	    // Iteration counter
+    var niter = 1000000;	    // Iteration counter
     
     //	Display a string on the debug console
 
     function show(s)
     {
-	document.debug.log.value += s + "\n";
+	console.log(s);
+	//document.debug.log.value += s + "\n";
     }
 
 
@@ -223,7 +224,7 @@
 	axis_slope_angle = 0;
 	od_sa = [ [0, 0], [0, 0]];
 	
-	niter = document.fbench.iterations.value;
+	niter = 1000000; //document.fbench.iterations.value;
 
     	start = new Date();
 	for (itercount = 0; itercount < niter; itercount++) {
@@ -264,7 +265,7 @@
 	
 	var mstime = stop.getTime() - start.getTime();
 	show("Elapsed time in seconds: " + (mstime / 1000).toFixed(3));
-	show("Time for 1000 iterations: " + ((mstime / 1000) * (1000.0 / niter)).toFixed(4));
+	show("Time for " + niter + "  iterations: " + ((mstime / 1000) * (1000.0 / niter)).toFixed(4));
 
 	outarr = [
     		    "   Marginal ray         " + fnum(od_sa[0][0]) + "  " + fnum(od_sa[0][1]),
@@ -304,3 +305,6 @@
     	    show("No errors in results.");
 	}
     }
+
+
+RunBenchmark();
